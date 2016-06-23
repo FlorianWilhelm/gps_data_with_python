@@ -1,0 +1,12 @@
+body:after {
+    content: url(./pics/inovex_logo.svg);
+    position: fixed;
+    bottom: 2em;
+    left: 2.5em;
+}
+
+@media screen and (max-width: 1900px), (max-height: 800px) {
+    .reveal .slides {
+        font-size: 0.82em;
+    }
+}
