@@ -1,5 +1,5 @@
 body:after {
-    content: url(./pics/inovex_logo.svg);
+    content: url(./gfx/inovex_logo.svg);
     position: fixed;
     bottom: 2em;
     left: 2.5em;
