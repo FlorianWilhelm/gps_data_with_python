@@ -11834,7 +11834,7 @@ a.anchor-link {
 <h1>Handling GPS data with Python</h1>
 <img src="./gfx/gnome_maps.png" widht=60%>
 <h3>Dr. Florian Wilhelm</h3>
-<h4>Senior Data Scientist @ inovex</h4>
+<h4>Senior Data Scientist @ <a href="http://www.inovex.de/">inovex</a></h4>
 </center>
 </div>
 </div>
@@ -11847,8 +11847,8 @@ a.anchor-link {
 <h1 id="Motivation">Motivation<a class="anchor-link" href="#Motivation">&#182;</a></h1><ul>
 <li>Project work and general interest</li>
 <li>Hard to find information about Python libraries</li>
-<li>Interst in the mathematical algorithms of that domain</li>
-<li>Needed a subject to come to EuroPython L</li>
+<li>Interest in the mathematical algorithms of that domain</li>
+<li>Needed a subject for a EuroPython talk ;-)</li>
 </ul>
 
 </div>
@@ -11859,13 +11859,19 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<center><h1>Titanic: Analysis of a Disaster</h1>
-<img src="./gfx/inovex_logo.svg" widht=60%>
-Painting from <a href=https://en.wikipedia.org/wiki/Sinking_of_the_RMS_Titanic>Willy Stöwer</a>, source & more information: <a href=https://www.kaggle.com/c/titanic>Kaggle</a>
-</center>
+<h1 id="GPX:-File-format-for-GPS-data">GPX: File format for GPS data<a class="anchor-link" href="#GPX:-File-format-for-GPS-data">&#182;</a></h1>
 </div>
 </div>
 </div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Simplifying-GPS-tracks">Simplifying GPS tracks<a class="anchor-link" href="#Simplifying-GPS-tracks">&#182;</a></h1>
+</div>
+</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -11906,55 +11912,23 @@ Painting from <a href=https://en.wikipedia.org/wiki/Sinking_of_the_RMS_Titanic>W
 </center>
 </div>
 </div>
-</div></section><section>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<center><h1>Can we predict who survived on the Titanic?</h1>
-<p><p>
-<font size="5">Based on the properties of a passenger like:
-<ul>
-  <li>gender,</li>
-  <li>age,</li>
-  <li>passenger class,</li>
-  <li>number of siblings,</li>
-  <li>...</li>
-</ul>
-</font>
-</p>
-</center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Additional-libraries-for-Data-Science">Additional libraries for Data Science<a class="anchor-link" href="#Additional-libraries-for-Data-Science">&#182;</a></h2><h4 id="Visualisation">Visualisation<a class="anchor-link" href="#Visualisation">&#182;</a></h4><ul>
-<li><strong>Bokeh</strong> allows interactive visualization like plots, dashboards in web browsers.</li>
-<li><strong>Pygal</strong> for standard but sexy charts in SVG.</li>
-</ul>
-<h4 id="High-performance-computing">High-performance computing<a class="anchor-link" href="#High-performance-computing">&#182;</a></h4><ul>
-<li><strong>Theano</strong> evaluate mathematical expressions involving multi-dimensional arrays efficiently.</li>
-<li><strong>Spark</strong> is fast and general-purpose cluster computing system with PySpark as Python interface.</li>
-<li><strong>Cython</strong> is an optimising static compiler for writing C-extensions in a Python-like language.</li>
-<li><strong>Dask</strong> enables parallel computing through task scheduling and blocked algorithms (Out-of-Core).</li>
-<li><strong>TensorFlow</strong> is a library for numerical computation using data flow graphs often used for AI.</li>
-</ul>
-<h4 id="Miscellaneous">Miscellaneous<a class="anchor-link" href="#Miscellaneous">&#182;</a></h4><ul>
-<li><strong>scikit-image</strong> provides tools for image processing.</li>
-<li><strong>SQLAlchemy</strong> is an SQL toolkit and Object Relational Mapper.</li>
-<li><strong>SymPy</strong> is library for symbolic mathematics, i.e. computer algebra system like Maple.</li>
-<li><strong>PyMC</strong> features Bayesian statistical models including Markov chain Monte Carlo.</li>
-<li><strong>NetworkX</strong> for working with structure, dynamics, and functions of complex networks.</li>
+<h2 id="Summary-of-libraries">Summary of libraries<a class="anchor-link" href="#Summary-of-libraries">&#182;</a></h2><ul>
+<li><strong>gpxpy</strong> for reading, writing GPX files as well as imputing of missing values.</li>
+<li><strong>srtm.py</strong> extends gpxpy to easily add missing elevation data to a GPX file.</li>
+<li><strong>mplleaflet</strong> converts matplotlib plots into zoomable, pannable, <a href="http://leafletjs.com/">Leaflet</a> map.</li>
+<li><strong>rdp</strong> implements the Ramer-Douglas-Peucker algorithm.</li>
+<li><strong>pykalman</strong> is a dead-simple Kalman Filter, Smoother and EM library.</li>
 </ul>
 
 </div>
 </div>
-</div></section></section><section><section>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -11970,10 +11944,10 @@ Painting from <a href=https://en.wikipedia.org/wiki/Sinking_of_the_RMS_Titanic>W
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Credits">Credits<a class="anchor-link" href="#Credits">&#182;</a></h1><p><br></p>
-<ul>
-<li><a href="http://karthaus.nl/rdp/">Marius Karthaus' Ramer-Douglas-Peucker Example</a></li>
+<h1 id="Credits">Credits<a class="anchor-link" href="#Credits">&#182;</a></h1><ul>
+<li>RDP Example from <a href="http://karthaus.nl/rdp/">Marius Karthaus</a></li>
 <li>Logo on first slide from <a href="https://wiki.gnome.org/Apps/Maps">Gnome Maps</a></li>
+<li>Book <a href="https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python">Kalman and Bayesian Filters</a> by Roger R. Labbe</li>
 </ul>
 
 </div>
