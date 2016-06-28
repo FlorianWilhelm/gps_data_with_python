@@ -11859,7 +11859,94 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="GPX:-File-format-for-GPS-data">GPX: File format for GPS data<a class="anchor-link" href="#GPX:-File-format-for-GPS-data">&#182;</a></h1>
+<h1 id="GPX:-GPS-Exchange-Format">GPX: GPS Exchange Format<a class="anchor-link" href="#GPX:-GPS-Exchange-Format">&#182;</a></h1><ul>
+<li>common GPS data format</li>
+<li>based on XML schema</li>
+<li>describes waypoints, routes and tracks</li>
+<li>GPS coordinates based GS-84 ellipsoid, height in meters</li>
+</ul>
+<p><img src="./gfx/route_track.png" widht=60%></p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="General-structure">General structure<a class="anchor-link" href="#General-structure">&#182;</a></h1><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;</span>
+<span class="nt">&lt;gpx</span> <span class="na">version=</span><span class="s">&quot;1.1&quot;</span> <span class="na">creator=</span><span class="s">&quot;Creator of the file&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;metadata&gt;</span> <span class="c">&lt;!-- metadata of the file --&gt;</span> <span class="nt">&lt;/metadata&gt;</span>
+  <span class="nt">&lt;wpt</span> <span class="na">lat=</span><span class="s">&quot;xx.xxx&quot;</span> <span class="na">lon=</span><span class="s">&quot;yy.yyy&quot;</span><span class="nt">&gt;</span><span class="c">&lt;!-- ... --&gt;</span><span class="nt">&lt;/wpt&gt;</span>
+  <span class="c">&lt;!-- more waypoints --&gt;</span>
+  <span class="nt">&lt;rte&gt;</span>
+    <span class="c">&lt;!-- attributes of the route --&gt;</span>
+    <span class="nt">&lt;rtept</span> <span class="na">lat=</span><span class="s">&quot;xx.xxx&quot;</span> <span class="na">lon=</span><span class="s">&quot;yy.yyy&quot;</span><span class="nt">&gt;</span><span class="c">&lt;!-- ... --&gt;</span><span class="nt">&lt;/rtept&gt;</span>
+    <span class="c">&lt;!-- more route points --&gt;</span>
+  <span class="nt">&lt;/rte&gt;</span>
+  <span class="c">&lt;!-- more routes --&gt;</span>
+  <span class="nt">&lt;trk&gt;</span>
+    <span class="c">&lt;!-- attributes of the track --&gt;</span>
+    <span class="nt">&lt;trkseg&gt;</span>
+      <span class="nt">&lt;trkpt</span> <span class="na">lat=</span><span class="s">&quot;xx.xxx&quot;</span> <span class="na">lon=</span><span class="s">&quot;yy.yyy&quot;</span><span class="nt">&gt;</span><span class="c">&lt;!-- ... --&gt;</span><span class="nt">&lt;/trkpt&gt;</span>
+      <span class="c">&lt;!-- more track points --&gt;</span>
+    <span class="nt">&lt;/trkseg&gt;</span>
+    <span class="c">&lt;!-- more track segments --&gt;</span>
+  <span class="nt">&lt;/trk&gt;</span>
+  <span class="c">&lt;!-- more tracks --&gt;</span>
+<span class="nt">&lt;/gpx&gt;</span>
+</pre></div>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Example-from-Polar-Flow">Example from Polar Flow<a class="anchor-link" href="#Example-from-Polar-Flow">&#182;</a></h1><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;gpx</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.topografix.com/GPX/1/1&quot;</span> <span class="na">version=</span><span class="s">&quot;1.1&quot;</span> <span class="na">creator=</span><span class="s">&quot;Polar Flow&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;metadata&gt;</span>
+    <span class="nt">&lt;author&gt;</span>
+      <span class="nt">&lt;name&gt;</span>Polar<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;/author&gt;</span>
+    <span class="nt">&lt;time&gt;</span>2016-04-17T08:02:12.000Z<span class="nt">&lt;/time&gt;</span>
+  <span class="nt">&lt;/metadata&gt;</span>
+  <span class="nt">&lt;trk&gt;</span>
+    <span class="nt">&lt;trkseg&gt;</span>
+      <span class="nt">&lt;trkpt</span> <span class="na">lat=</span><span class="s">&quot;53.560591&quot;</span> <span class="na">lon=</span><span class="s">&quot;9.9755985&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;ele&gt;</span>17.0<span class="nt">&lt;/ele&gt;</span>
+        <span class="nt">&lt;time&gt;</span>2016-04-17T08:02:12.000Z<span class="nt">&lt;/time&gt;</span>
+      <span class="nt">&lt;/trkpt&gt;</span>
+      <span class="nt">&lt;trkpt</span> <span class="na">lat=</span><span class="s">&quot;53.560591&quot;</span> <span class="na">lon=</span><span class="s">&quot;9.9755985&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;ele&gt;</span>17.0<span class="nt">&lt;/ele&gt;</span>
+        <span class="nt">&lt;time&gt;</span>2016-04-17T08:02:13.000Z<span class="nt">&lt;/time&gt;</span>
+      <span class="nt">&lt;/trkpt&gt;</span>
+      <span class="c">&lt;!-- ... many more points --&gt;</span>
+    <span class="nt">&lt;/trkseg&gt;</span>
+  <span class="nt">&lt;/trk&gt;</span>
+<span class="nt">&lt;/gpx&gt;</span>
+</pre></div>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="gpxpy:-GPX-file-parser">gpxpy: GPX file parser<a class="anchor-link" href="#gpxpy:-GPX-file-parser">&#182;</a></h1><ul>
+<li>for reading and writing GPX files</li>
+<li>licensed unter Apache 2.0</li>
+<li>contains <code>gpxinfo</code> cli tool for basic stats</li>
+<li>Python 3 compatible</li>
+<li>written by Tomo Krajina</li>
+<li>used on <a href="http://www.trackprofiler.com/">http://www.trackprofiler.com/</a></li>
+</ul>
+
 </div>
 </div>
 </div></section></section><section><section>
@@ -11918,6 +12005,15 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Kalman-Filter-and-Smoother">Kalman Filter and Smoother<a class="anchor-link" href="#Kalman-Filter-and-Smoother">&#182;</a></h1>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Summary-of-libraries">Summary of libraries<a class="anchor-link" href="#Summary-of-libraries">&#182;</a></h2><ul>
 <li><strong>gpxpy</strong> for reading, writing GPX files as well as imputing of missing values.</li>
 <li><strong>srtm.py</strong> extends gpxpy to easily add missing elevation data to a GPX file.</li>
@@ -11963,7 +12059,7 @@ body:after {
 
 @media screen and (max-width: 1900px), (max-height: 900px) {
     .reveal .slides {
-        font-size: 1.5em;
+        font-size: 1.3em;
     }
 }
 </style></div></section></section>
