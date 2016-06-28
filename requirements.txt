@@ -1,0 +1,15 @@
+# Libraries needed for running the notebooks
+
+# Basics
+numpy
+pandas
+scipy
+matplotlib
+seaborn
+jupyter
+
+# GPS related
+gpxpy
+mplleaflet
+srtm.py
+pykalman
