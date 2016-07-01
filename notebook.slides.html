@@ -11832,7 +11832,7 @@ a.anchor-link {
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <h1>Handling GPS data with Python</h1>
-<img src="./gfx/gnome_maps.png" widht=60%>
+<img src="./gfx/gnome_maps.png" width=40%>
 <h3>Dr. Florian Wilhelm</h3>
 <h4>Senior Data Scientist @ <a href="http://www.inovex.de/">inovex</a></h4>
 </center>
@@ -14070,7 +14070,55 @@ lKF5/rzhQwAAAABJRU5ErkJggg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Kalman-Filter-and-Smoother">Kalman Filter and Smoother<a class="anchor-link" href="#Kalman-Filter-and-Smoother">&#182;</a></h1>
+<h1 id="Kalman-Filter-and-Smoother">Kalman Filter and Smoother<a class="anchor-link" href="#Kalman-Filter-and-Smoother">&#182;</a></h1><ul>
+<li><p><em>State equation</em>: $\mathbf{x}_{k}=\mathbf{F}_{k}\mathbf {x}_{k-1}+\mathbf{B}_{k}\mathbf{u}_{k}+\mathbf{w}_{k}$ where</p>
+<ul>
+<li>$\mathbf{x}_{k}$ is the state vector at timestep $k$,</li>
+<li>$\mathbf{u}_{k}$ is the control vector at timestep $k$,</li>
+<li>$\mathbf{F}_{k}$ is the state transition matrix,</li>
+<li>$\mathbf{B}_{k}$ is the control-input matrix,</li>
+<li>$\mathbf{w}_{k}$ is the process noise $\mathbf{w}_{k}\sim{\mathcal{N}}(0,\mathbf{Q}_{k})$ with covariance $\mathbf{Q}_{k}$ </li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><em>Measurement equation</em>: $\mathbf{z}_{k}=\mathbf{H}_{k}\mathbf{x}_{k}+\mathbf{v}_{k}$ where</p>
+<ul>
+<li>$\mathbf{z}_{k}$ is the measurement vector at timestep $k$,</li>
+<li>$\mathbf{H}_{k}$ is the observation matrix,</li>
+<li>$\mathbf{w}_{k}$ is the observation noise $\mathbf{v}_{k}\sim{\mathcal{N}}(0,\mathbf{R}_{k})$</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="...-or-much-more-intuitively-put">... or much more intuitively put<a class="anchor-link" href="#...-or-much-more-intuitively-put">&#182;</a></h1><p>Let</p>
+<ul>
+<li>$\mathbf{\hat{x}}_{k}^{-}$ be the <em>a priori</em>  state estimate with knowledge about the process prior to $k$</li>
+<li>$\mathbf{\hat{x}}_{k}$ be the <em>a posteriori</em> state estimate including the the measurement $z_{k}$</li>
+</ul>
+<p>and an update equation linking $\mathbf{\hat{x}}_{k}$ to $\mathbf{\hat{x}}_{k}^{-}$, i.e.</p>
+$$\mathbf{\hat{x}}_{k} = \mathbf{\hat{x}}_{k}^{-} + \mathbf{K}(\mathbf{\mathbf{z}_{k} - \mathbf{H}\hat{x}}_{k}^{-})$$<p>where $\mathbf{K}$ is the <em>Kalman gain</em>.</p>
+<p><strong>Goal</strong> is to minimize the <em>a posteriori</em> estimate error covariance $\mathbf{P}_{k} = \mathbb{E}[\mathbf{e}_k,\mathbf{e}_k]$ with $\mathbf{e}_{k}\equiv\mathbf{x}_{k}-\mathbf{\hat{x}}_{k}$ by finding an optimal $\mathbf{K}$.</p>
+<p><small>[... read <a href="https://www.cs.unc.edu/~welch/media/pdf/kalman_intro.pdf">An Introduction to the Kalman Filter</a> by G. Welch & G. Bishop for more details]</small></p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="...-and-in-practice">... and in practice<a class="anchor-link" href="#...-and-in-practice">&#182;</a></h1><p><img src="./gfx/prediction_correction.png" width=80%></p>
+
 </div>
 </div>
 </div></section></section><section><section>
@@ -14109,6 +14157,7 @@ lKF5/rzhQwAAAABJRU5ErkJggg==
 <li>RDP Example from <a href="http://karthaus.nl/rdp/">Marius Karthaus</a></li>
 <li>Waypoint/track graphic adapted from <a href="https://en.wikipedia.org/wiki/GPS_Exchange_Format">Wikipedia</a></li>
 <li>Logo on first slide from <a href="https://wiki.gnome.org/Apps/Maps">Gnome Maps</a></li>
+<li>Kalman prediction &amp; correction graphic from <a href="http://bilgin.esme.org/BitsAndBytes/KalmanFilterforDummies">Bilgin's blog</a></li>
 <li>Book <a href="https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python">Kalman and Bayesian Filters</a> by Roger R. Labbe</li>
 </ul>
 
