@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-jupyter nbconvert index.ipynb --to slides --post serve 
+jupyter nbconvert talk.ipynb --to slides --post serve 
