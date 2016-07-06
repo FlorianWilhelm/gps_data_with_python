@@ -2,8 +2,8 @@
 
 # Basics
 numpy
-pandas
 scipy
+pandas
 matplotlib
 seaborn
 jupyter

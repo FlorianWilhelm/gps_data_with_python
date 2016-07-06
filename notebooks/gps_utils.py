@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from math import sqrt
+import math
 import numpy as np
 
 # RDP algorithm as long as the rdp package is not iterative.
@@ -50,7 +50,7 @@ def PointLineDistance(point, start, end):
     if np.all(np.equal(start, end)) :
         return np.linalg.norm(point, start)
     n = abs((end[0] - start[0]) * (start[1] - point[1]) - (start[0] - point[0]) * (end[1] - start[1]))
-    d = sqrt((end[0] - start[0]) * (end[0] - start[0]) + (end[1] - start[1]) * (end[1] - start[1]))
+    d = math.sqrt((end[0] - start[0]) * (end[0] - start[0]) + (end[1] - start[1]) * (end[1] - start[1]))
     return n/d
 
 
