@@ -16705,12 +16705,7 @@ $$\mathbf{\hat{x}}_{k} = \mathbf{\hat{x}}_{k}^{-} + \mathbf{K}(\mathbf{\mathbf{z
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Kalman-filter-for-GPS-data">Kalman filter for GPS data<a class="anchor-link" href="#Kalman-filter-for-GPS-data">&#182;</a></h1><p>Given</p>
-<ul>
-<li>Position $\mathbf{x}_{k}=(x_{k},y_{k},z_{k})$</li>
-<li>Velocity $\mathbf{v}_{k}=(\alpha_{k},\beta_{k},\gamma_{k})$</li>
-</ul>
-<p>our model state equation is</p>
+<h1 id="Kalman-filter-for-GPS-data">Kalman filter for GPS data<a class="anchor-link" href="#Kalman-filter-for-GPS-data">&#182;</a></h1><p>Given position $\mathbf{x}_{k}=(x_{k},y_{k},z_{k})$ and velocity $\mathbf{v}_{k}=(\alpha_{k},\beta_{k},\gamma_{k})$ our model state equation is</p>
 <p><big>$$\mathbf{x}_{k+1} = \mathbf{x}_{k} + \mathbf{v}_{k}dt + \mathbf{w}_{k}$$</big>
 or in vector notation
 $$
@@ -16757,11 +16752,7 @@ $$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Since-only-the-position-is-measured">Since only the position is measured<a class="anchor-link" href="#Since-only-the-position-is-measured">&#182;</a></h1><p>Given</p>
-<ul>
-<li>measurment $\mathbf{z}_{k}=(\tilde{x}_k,\tilde{y}_k,\tilde{z}_k)$</li>
-</ul>
-<p>our measurement equation is</p>
+<h1 id="Since-only-the-position-is-measured">Since only the position is measured<a class="anchor-link" href="#Since-only-the-position-is-measured">&#182;</a></h1><p>Given measurment $\mathbf{z}_{k}=(\tilde{x}_k,\tilde{y}_k,\tilde{z}_k)$ our measurement equation is</p>
 <p><big> $$\mathbf{z}_{k}=\mathbf{H}_{k}\mathbf{x}_{k}+\mathbf{v}_{k}$$</big>
 or in vector notation
 $$
