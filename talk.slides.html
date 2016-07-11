@@ -16649,22 +16649,22 @@ MAoGCSGEEEJs2P8DbahmGZClX70AAAAASUVORK5CYII=
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Kalman-Filter-and-Smoother">Kalman Filter and Smoother<a class="anchor-link" href="#Kalman-Filter-and-Smoother">&#182;</a></h1><ul>
-<li><p><em>State equation</em>: $\mathbf{x}_{k}=\mathbf{F}_{k}\mathbf {x}_{k-1}+\mathbf{B}_{k}\mathbf{u}_{k}+\mathbf{w}_{k}$ where</p>
+<li><p><em>State equation</em>: $\mathbf{x}_{k}=\mathbf{F}_{k}\mathbf {x}_{k-1}+\mathbf{B}_{k}\mathbf{u}_{k}+\mathbf{\epsilon}_{k}$ where</p>
 <ul>
 <li>$\mathbf{x}_{k}$ is the state vector at timestep $k$,</li>
 <li>$\mathbf{u}_{k}$ is the control vector at timestep $k$,</li>
 <li>$\mathbf{F}_{k}$ is the state transition matrix,</li>
 <li>$\mathbf{B}_{k}$ is the control-input matrix,</li>
-<li>$\mathbf{w}_{k}$ is the process noise $\mathbf{w}_{k}\sim{\mathcal{N}}(0,\mathbf{Q})$ with covariance $\mathbf{Q}$ </li>
+<li>$\mathbf{\epsilon}_{k}$ is the process noise $\mathbf{\epsilon}_{k}\sim{\mathcal{N}}(0,\mathbf{Q})$ with covariance $\mathbf{Q}$ </li>
 </ul>
 </li>
 </ul>
 <ul>
-<li><p><em>Measurement equation</em>: $\mathbf{z}_{k}=\mathbf{H}_{k}\mathbf{x}_{k}+\mathbf{v}_{k}$ where</p>
+<li><p><em>Measurement equation</em>: $\mathbf{z}_{k}=\mathbf{H}_{k}\mathbf{x}_{k}+\mathbf{\delta}_{k}$ where</p>
 <ul>
 <li>$\mathbf{z}_{k}$ is the measurement vector at timestep $k$,</li>
 <li>$\mathbf{H}_{k}$ is the observation matrix,</li>
-<li>$\mathbf{v}_{k}$ is the observation noise $\mathbf{v}_{k}\sim{\mathcal{N}}(0,\mathbf{R})$ with covariance $\mathbf{R}$ </li>
+<li>$\mathbf{\delta}_{k}$ is the observation noise $\mathbf{\delta}_{k}\sim{\mathcal{N}}(0,\mathbf{R})$ with covariance $\mathbf{R}$ </li>
 </ul>
 </li>
 </ul>
@@ -16706,7 +16706,7 @@ $$\mathbf{\hat{x}}_{k} = \mathbf{\hat{x}}_{k}^{-} + \mathbf{K}(\mathbf{\mathbf{z
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Kalman-filter-for-GPS-data">Kalman filter for GPS data<a class="anchor-link" href="#Kalman-filter-for-GPS-data">&#182;</a></h1><p>Given position $\mathbf{x}_{k}=(x_{k},y_{k},z_{k})$ and velocity $\mathbf{v}_{k}=(\alpha_{k},\beta_{k},\gamma_{k})$ our model state equation is</p>
-<p><big>$$\mathbf{x}_{k+1} = \mathbf{x}_{k} + \mathbf{v}_{k}dt + \mathbf{w}_{k}$$</big>
+<p><big>$$\mathbf{x}_{k+1} = \mathbf{x}_{k} + \mathbf{v}_{k}dt + \mathbf{\epsilon}_{k},\quad \mathbf{v}_{k+1}=\mathbf{v}_{k}+ \mathbf{\epsilon}_{k}$$</big>
 or in vector notation
 $$
 \begin{pmatrix}
@@ -16718,9 +16718,9 @@ z_{k+1} \\
 \gamma_{k+1} \\
 \end{pmatrix}=
 \begin{pmatrix}
-1 & 0 & 0 & 1 & 0 & 0 \\
-0 & 1 & 0 & 0 & 1 & 0 \\
-0 & 0 & 1 & 0 & 0 & 1 \\
+1 & 0 & 0 & dt & 0 & 0 \\
+0 & 1 & 0 & 0 & dt & 0 \\
+0 & 0 & 1 & 0 & 0 & dt \\
 0 & 0 & 0 & 1 & 0 & 0 \\
 0 & 0 & 0 & 0 & 1 & 0 \\
 0 & 0 & 0 & 0 & 0 & 1 \\
@@ -16735,14 +16735,15 @@ z_{k} \\
 \gamma_{k} \\
 \end{pmatrix}+
 \begin{pmatrix}
-v^1_{k} \\
-v^2_{k} \\
-v^3_{k} \\
-v^4_{k} \\
-v^5_{k} \\
-v^6_{k} \\
-\end{pmatrix}
-$$</p>
+\epsilon^1_{k} \\
+\epsilon^2_{k} \\
+\epsilon^3_{k} \\
+\epsilon^4_{k} \\
+\epsilon^5_{k} \\
+\epsilon^6_{k} \\
+\end{pmatrix}.
+$$
+For the sampling rate in our date $dt=1$.</p>
 
 </div>
 </div>
@@ -16752,8 +16753,8 @@ $$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Since-only-the-position-is-measured">Since only the position is measured<a class="anchor-link" href="#Since-only-the-position-is-measured">&#182;</a></h1><p>Given measurment $\mathbf{z}_{k}=(\tilde{x}_k,\tilde{y}_k,\tilde{z}_k)$ our measurement equation is</p>
-<p><big> $$\mathbf{z}_{k}=\mathbf{H}_{k}\mathbf{x}_{k}+\mathbf{v}_{k}$$</big>
+<h1 id="Since-only-the-position-is-measured">Since only the position is measured<a class="anchor-link" href="#Since-only-the-position-is-measured">&#182;</a></h1><p>Given measurement $\mathbf{z}_{k}=(\tilde{x}_k,\tilde{y}_k,\tilde{z}_k)$ our measurement equation is</p>
+<p><big> $$\mathbf{z}_{k}=\mathbf{H}_{k}\mathbf{x}_{k}+\mathbf{\delta}_{k}$$</big>
 or in vector notation
 $$
 \begin{pmatrix}
@@ -16775,15 +16776,15 @@ z_{k} \\
 \gamma_{k} \\
 \end{pmatrix}+
 \begin{pmatrix}
-v^1_{k} \\
-v^2_{k} \\
-v^3_{k} \\
-v^4_{k} \\
-v^5_{k} \\
-v^6_{k} \\
-\end{pmatrix}
+\delta^1_{k} \\
+\delta^2_{k} \\
+\delta^3_{k} \\
+\delta^4_{k} \\
+\delta^5_{k} \\
+\delta^6_{k} \\
+\end{pmatrix}.
 $$
-with an observation covariance matrix $\mathbf{R}=diag(1e-4,1e-4,100)$ where $1e-4$ is roughly 10-30m in longitude/latitude</p>
+The observation covariance matrix $\mathbf{R}=diag(1e-4,1e-4,100)$ where $1e-4$ is roughly 10-30m in longitude/latitude.</p>
 
 </div>
 </div>
@@ -19488,16 +19489,6 @@ AoHQxPl/6Ck/Kh9EeggAAAAASUVORK5CYII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<center><h1>Questions?</h1><br>
-<img src=./gfx/light-bulb.jpg align="center" width=40%/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Credits">Credits<a class="anchor-link" href="#Credits">&#182;</a></h1><ul>
 <li>RDP Example from <a href="http://karthaus.nl/rdp/">Marius Karthaus</a></li>
 <li>Waypoint/track graphic adapted from <a href="https://en.wikipedia.org/wiki/GPS_Exchange_Format">Wikipedia</a></li>
@@ -19506,6 +19497,17 @@ AoHQxPl/6Ck/Kh9EeggAAAAASUVORK5CYII=
 <li>Book <a href="https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python">Kalman and Bayesian Filters</a> by Roger R. Labbe</li>
 </ul>
 
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center><h1>Questions?</h1><br>
+<img src=./gfx/light-bulb.jpg align="center" width=38%/>
+<large>Find the talk under <a href='https://github.com/FlorianWilhelm/gps_data_with_python'>https://github.com/FlorianWilhelm/gps_data_with_python</a></large></center>
 </div>
 </div>
 </div><div class="fragment"><link rel="stylesheet" href="./css/font-awesome.min.css">
